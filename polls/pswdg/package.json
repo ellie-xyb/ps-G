@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild app.jsx --bundle --outfile=../static/polls/out.js"
-
+    "build": "esbuild app.jsx --bundle --outfile=../static/polls/out.js",
+    "watch": "esbuild app.jsx --bundle --outfile=../static/polls/out.js --watch --minify"
   },
   "author": "",
   "license": "ISC",
