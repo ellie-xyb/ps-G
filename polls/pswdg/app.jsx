@@ -1,5 +1,13 @@
-import * as React from 'react'
-import * as Server from 'react-dom/server'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@mui/material/Button';
 
-let Greet = () => <h1>Hello, bear!</h1>
-console.log(Server.renderToString(<Greet />))
+function App() {
+  return (
+    <Button variant="contained" color="primary">
+      Hello World
+    </Button>
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
