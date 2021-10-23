@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import {Box} from '@mui/material';
+import {Box, Stack} from '@mui/material';
 // import ResultBox from './ResultBox'
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -54,7 +54,10 @@ export default function PsGBox() {
             border: '1px dashed grey',
             margin: '10px auto',
           }}
-        />
+        >
+          <Stack sx={{textAlign: 'center', my: 3}}>Customize your password</Stack>
+          <Divider sx={{ width: 480, margin: '10px auto', }}  />
+        </Box>
     </Box>
   );
 }
