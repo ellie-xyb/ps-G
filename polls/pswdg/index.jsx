@@ -1,8 +1,12 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import Box from '@mui/material/Box';
-import { padding } from '@mui/system';
+import {Box} from '@mui/material';
 // import ResultBox from './ResultBox'
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import LoopIcon from '@mui/icons-material/Loop';
 
 export default function PsGBox() {
   return (
@@ -23,9 +27,24 @@ export default function PsGBox() {
             borderRadius: 3,
             border: '1px dashed grey',
             margin: '25px auto',
-
-          }}
-        />
+          }}>
+          <Box
+            component="form"
+            sx={{ p: '25px 12px', display: 'flex', alignItems: 'center', width: 580 }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              inputProps={{ 'aria-label': 'generated password' }}
+            />
+            <IconButton sx={{ p: '10px' }} aria-label="copy">
+              <ContentCopyIcon />
+            </IconButton>
+            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            <IconButton color="primary" sx={{ p: '12px' }} aria-label="generate new one">
+              <LoopIcon />
+            </IconButton>
+          </Box>
+        </Box>
         <Box
           sx={{
             width: 600,
