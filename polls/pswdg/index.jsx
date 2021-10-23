@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {Box, Stack} from '@mui/material';
-// import ResultBox from './ResultBox'
+import SizeSlider from './SizeSlider'
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -55,13 +55,10 @@ export default function PsGBox() {
             margin: '10px auto',
           }}
         >
-          <Stack sx={{textAlign: 'center', my: 3}}>Customize your password</Stack>
+          <Stack sx={{textAlign: 'center', my: 3,fontSize: 20}}>Customize your password</Stack>
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
           <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
-            <Stack>
-              <p>Password Length</p>
-              <p>else</p>
-            </Stack>
+            <SizeSlider />
             <Stack>
               <p>Uppercase</p>
             </Stack>
