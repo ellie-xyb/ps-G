@@ -57,6 +57,15 @@ export default function PsGBox() {
         >
           <Stack sx={{textAlign: 'center', my: 3}}>Customize your password</Stack>
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
+          <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
+            <Stack>
+              <p>Password Length</p>
+              <p>else</p>
+            </Stack>
+            <Stack>
+              <p>Uppercase</p>
+            </Stack>
+          </Box>
         </Box>
     </Box>
   );
