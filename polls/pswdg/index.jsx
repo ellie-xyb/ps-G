@@ -1,7 +1,8 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {Box, Stack} from '@mui/material';
-import SizeSlider from './SizeSlider'
+import SizeSlider from './SizeSlider';
+import RulesCheckBox from './RulesCheckBox';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -59,9 +60,7 @@ export default function PsGBox() {
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
           <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
             <SizeSlider />
-            <Stack>
-              <p>Uppercase</p>
-            </Stack>
+            <RulesCheckBox />
           </Box>
         </Box>
     </Box>
