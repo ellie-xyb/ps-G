@@ -9,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
 
+
+
 export default function PsGBox() {
   return (
     <Box
@@ -35,7 +37,9 @@ export default function PsGBox() {
           >
             <InputBase
               sx={{ ml: 1, flex: 1 }}
-              inputProps={{ 'aria-label': 'generated password' }}
+              inputProps={{ 'aria-label': 'generated password'}}
+              autoFocus="true"
+              value=""
             />
             <IconButton sx={{ p: '10px' }} aria-label="copy">
               <ContentCopyIcon />
