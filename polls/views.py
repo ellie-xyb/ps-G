@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 import string
 import random
 
 
-def index(request):
+def generate_password(request):
     characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
 
     length = int("5")
@@ -12,6 +13,9 @@ def index(request):
     for i in range(length):
         password.append(random.choice(characters))
     random.shuffle(password)
-    password = "".join(password)
 
-    return render(request, 'polls/index.html', {'password': password})
+    return HttpResponse("".join(password))
+
+
+def index(request):
+    return render(request, 'polls/index.html')
