@@ -4,7 +4,7 @@ import string
 import random
 
 
-def generate_password(request):
+def generated_password(request):
     characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
 
     length = int("5")
