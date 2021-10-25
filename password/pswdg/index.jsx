@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {  useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {Box, Stack} from '@mui/material';
 import SizeSlider from './SizeSlider';
@@ -9,9 +9,21 @@ import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
 
-
-
 export default function PsGBox() {
+  const [value, setValue]= useState("");
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/password/generated-password")
+    .then(res => res.text())
+    .then(
+      (result) => {
+        console.log(result)
+        setValue(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }, [])
   return (
     <Box
       sx={{
@@ -39,7 +51,7 @@ export default function PsGBox() {
               sx={{ ml: 1, flex: 1 }}
               inputProps={{ 'aria-label': 'generated password'}}
               autoFocus="true"
-              value=""
+              value = { value }
             />
             <IconButton sx={{ p: '10px' }} aria-label="copy">
               <ContentCopyIcon />
