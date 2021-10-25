@@ -12,7 +12,7 @@ import LoopIcon from '@mui/icons-material/Loop';
 export default function PsGBox() {
   const [value, setValue]= useState("");
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/password/generated-password")
+    fetch("/password/generated-password")
     .then(res => res.text())
     .then(
       (result) => {
