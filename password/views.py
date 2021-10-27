@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import json
 import string
 import random
 
@@ -19,15 +20,18 @@ def generated_password(length):
 
 def gather_options(request):
     if request.method == 'POST':
+        dic = {}
         if request.POST:
             length = request.POST.get('length')
             if length:
                 password = generated_password(length)
-                return HttpResponse(password)
+                dic['length'] = password
+                dic = json.dumps(dic)
+                return HttpResponse(dic)
             else:
-                return HttpResponse('Try again')
+                return HttpResponse('There is no length')
         else:
-            return HttpResponse('Try again')
+            return HttpResponse('It is empty')
     else:
         return HttpResponse('Wrong action')
 
