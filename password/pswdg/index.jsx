@@ -23,7 +23,8 @@ export default function PsGBox() {
   //     }
   //   )
   // }, [])
-  const [value, setValue]= useState("");
+  const [value, setValue] = useState("");
+  const [length, setLength] = useState(10);
   useEffect(() => {
     fetch('/password/options', {
       method: 'POST',
@@ -32,12 +33,13 @@ export default function PsGBox() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        length: 5
+        length: length
       })
     })
     .then(response => response.json())
     .then(data => setValue(data['password']))
-  }, [])
+  }, [length])
+  
   return (
     <Box
       sx={{
@@ -89,7 +91,7 @@ export default function PsGBox() {
           <Stack sx={{textAlign: 'center', my: 3,fontSize: 20}}>Customize your password</Stack>
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
           <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
-            <SizeSlider />
+            <SizeSlider value={length} setValue={setLength}/>
             <RulesCheckBox />
           </Box>
         </Box>

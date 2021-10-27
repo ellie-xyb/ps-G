@@ -10,22 +10,21 @@ const Input = styled(MuiInput)`
   width: 42px;
 `;
 
-export default function SizeSlider() {
-  const [value, setValue] = React.useState(1);
-
+export default function SizeSlider(props) {
+  // const [value, setValue] = React.useState(1);
   const handleSliderChange = (event, newValue) => {
-    setValue(newValue);
+    props.setValue(newValue);
   };
 
   const handleInputChange = (event) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value));
+    props.setValue(event.target.value === '' ? '' : Number(event.target.value));
   };
 
   const handleBlur = () => {
     if (value < 0) {
-      setValue(0);
+      props.setValue(0);
     } else if (value > 15) {
-      setValue(15);
+      props.setValue(15);
     }
   };
 
@@ -38,14 +37,14 @@ export default function SizeSlider() {
         <Grid item xs>
           <Slider
             max={15}
-            value={typeof value === 'number' ? value : 0}
+            value={typeof props.value === 'number' ? props.value : 0}
             onChange={handleSliderChange}
             aria-labelledby="password-length"
           />
         </Grid>
         <Grid item>
           <Input
-            value={value}
+            value={props.value}
             size="small"
             onChange={handleInputChange}
             onBlur={handleBlur}
