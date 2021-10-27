@@ -21,11 +21,13 @@ def generated_password(length):
 def gather_options(request):
     if request.method == 'POST':
         dic = {}
-        if request.POST:
-            length = request.POST.get('length')
+        # print(request.body)
+        json_data = json.loads(request.body)
+        if json_data:
+            length = json_data.get('length')
             if length:
                 password = generated_password(length)
-                dic['length'] = password
+                dic['password'] = password
                 dic = json.dumps(dic)
                 return HttpResponse(dic)
             else:
