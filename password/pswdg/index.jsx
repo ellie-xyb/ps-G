@@ -32,7 +32,7 @@ export default function PsGBox() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      length: '5'
+      length: 5
     })
   })
 
