@@ -10,7 +10,6 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
 
 export default function PsGBox() {
-  // const [value, setValue]= useState("");
   // useEffect(() => {
   //   fetch("/password/generated-password")
   //   .then(res => res.text())
@@ -24,18 +23,21 @@ export default function PsGBox() {
   //     }
   //   )
   // }, [])
-
-  fetch('/password/options', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      length: 5
+  const [value, setValue]= useState("");
+  useEffect(() => {
+    fetch('/password/options', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        length: 5
+      })
     })
-  })
-
+    .then(response => response.json())
+    .then(data => setValue(data['password']))
+  }, [])
   return (
     <Box
       sx={{
@@ -63,7 +65,7 @@ export default function PsGBox() {
               sx={{ ml: 1, flex: 1 }}
               inputProps={{ 'aria-label': 'generated password'}}
               autoFocus="true"
-              // value = { value }
+              value = { value }
             />
             <IconButton sx={{ p: '10px' }} aria-label="copy">
               <ContentCopyIcon />
