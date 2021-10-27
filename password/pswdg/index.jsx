@@ -33,13 +33,13 @@ export default function PsGBox() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        length: length
+        length
       })
     })
     .then(response => response.json())
     .then(data => setValue(data['password']))
   }, [length])
-  
+
   return (
     <Box
       sx={{
