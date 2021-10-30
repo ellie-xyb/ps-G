@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, {  useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import {Box, Stack} from '@mui/material';
 import SizeSlider from './SizeSlider';
@@ -10,6 +10,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
 
 export default function PsGBox() {
+
   // handel password length
   const [value, setValue] = useState("");
   const [length, setLength] = useState(10);
@@ -78,9 +79,9 @@ export default function PsGBox() {
               sx={{ ml: 1, flex: 1 }}
               inputProps={{ 'aria-label': 'generated password'}}
               autoFocus="true"
-              value = { value }
+              value={ value }
             />
-            <IconButton sx={{ p: '10px' }} aria-label="copy">
+            <IconButton sx={{ p: '10px' }} aria-label="copy" onClick={() =>  navigator.clipboard.writeText(value)}>
               <ContentCopyIcon />
             </IconButton>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
