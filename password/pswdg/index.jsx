@@ -47,6 +47,10 @@ export default function PsGBox() {
     .then(data => setValue(data['password']))
   }, [length, uppercase, lowercase, numbers, symbols])
 
+  function refreshPage(){
+    window.location.reload(); 
+  }
+
   return (
     <Box
       sx={{
@@ -80,7 +84,7 @@ export default function PsGBox() {
               <ContentCopyIcon />
             </IconButton>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton color="primary" sx={{ p: '12px' }} aria-label="generate new one">
+            <IconButton color="primary" sx={{ p: '12px' }} aria-label="generate new one" onClick={ refreshPage } >
               <LoopIcon />
             </IconButton>
           </Box>
