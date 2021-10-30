@@ -33,7 +33,9 @@ export default function PsGBox() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        length
+        length: length,
+         
+
       })
     })
     .then(response => response.json())
