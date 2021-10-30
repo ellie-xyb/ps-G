@@ -5,20 +5,23 @@ import string
 import random
 
 
-def generated_password(length, uppercase_check, lowercase_check, numbers_check, symbols_check):
+def generated_password(length, up, low, num, sym):
     # characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
-    upper_list = string.ascii_uppercase if uppercase_check else ''
-    lower_list = string.ascii_lowercase if lowercase_check else ''
-    numbers_list = string.digits if numbers_check else ''
-    symbols_list = "!@#$%^&*()" if symbols_check else ''
-    characters = list(upper_list + lower_list + numbers_list + symbols_list)
-    random.shuffle(characters)
-    password = []
-    for i in range(length):
-        password.append(random.choice(characters))
-    random.shuffle(password)
-
-    return "".join(password)
+    upper_list = string.ascii_uppercase if up else ''
+    lower_list = string.ascii_lowercase if low else ''
+    numbers_list = string.digits if num else ''
+    symbols_list = "!@#$%^&*()" if sym else ''
+    characters_list = upper_list + lower_list + numbers_list + symbols_list
+    if characters_list == '':
+        return "Select rules first"
+    else:
+        characters = list(characters_list)
+        random.shuffle(characters)
+        password = []
+        for i in range(length):
+            password.append(random.choice(characters))
+        random.shuffle(password)
+        return "".join(password)
 
 
 def gather_options(request):
@@ -29,13 +32,13 @@ def gather_options(request):
         if json_data:
             length = json_data.get('length')
             if length:
-                uppercase_check = json_data.get('uppercase')
-                lowercase_check = json_data.get('lowercase')
-                numbers_check = json_data.get('numbers')
-                symbols_check = json_data.get('symbols')
-                print(uppercase_check)
+                up_check = json_data.get('uppercase')
+                low_check = json_data.get('lowercase')
+                num_check = json_data.get('numbers')
+                sym_check = json_data.get('symbols')
                 password = generated_password(
-                    length, uppercase_check, lowercase_check, numbers_check, symbols_check)
+                    length, up_check, low_check, num_check, sym_check)
+                print(password)
                 dic['password'] = password
                 dic = json.dumps(dic)
                 return HttpResponse(dic)
