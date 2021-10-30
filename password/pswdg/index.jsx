@@ -16,9 +16,9 @@ export default function PsGBox() {
 
   // handel password other options
   const [uppercase, setUppercase] = React.useState(false);
-  const [lowercase, setLowercase] = React.useState(false);
-  const [numbers, setNumbers] = React.useState(false);
-  const [symbols, setSymbols] = React.useState(false);
+  const [lowercase, setLowercase] = React.useState(true);
+  const [numbers, setNumbers] = React.useState(true);
+  const [symbols, setSymbols] = React.useState(true);
 
   let otherOptions = {
     'uppercase': uppercase,

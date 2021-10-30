@@ -6,7 +6,6 @@ import random
 
 
 def generated_password(length, up, low, num, sym):
-    # characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
     upper_list = string.ascii_uppercase if up else ''
     lower_list = string.ascii_lowercase if low else ''
     numbers_list = string.digits if num else ''
