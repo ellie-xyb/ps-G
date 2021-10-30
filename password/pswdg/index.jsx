@@ -8,6 +8,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
+import CheckIcon from '@mui/icons-material/Check';
 
 export default function PsGBox() {
 
@@ -52,6 +53,14 @@ export default function PsGBox() {
     window.location.reload(); 
   }
 
+  // handel copy action
+  const [copied, setCopied] = useState(false);
+  function copyToClipBoard(){
+    navigator.clipboard.writeText(value)
+    setCopied(true);
+    setTimeout(() => {  setCopied(false);; }, 800);
+  };
+
   return (
     <Box
       sx={{
@@ -81,8 +90,8 @@ export default function PsGBox() {
               autoFocus="true"
               value={ value }
             />
-            <IconButton sx={{ p: '10px' }} aria-label="copy" onClick={() =>  navigator.clipboard.writeText(value)}>
-              <ContentCopyIcon />
+            <IconButton sx={{ p: '10px' }} aria-label="copy" onClick={ copyToClipBoard }>
+              {copied ? <CheckIcon sx={{color: "#ff1500"}} /> : <ContentCopyIcon />}
             </IconButton>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
             <IconButton color="primary" sx={{ p: '12px' }} aria-label="generate new one" onClick={ refreshPage } >
