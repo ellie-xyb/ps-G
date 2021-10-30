@@ -5,24 +5,22 @@ export default function RulesCheckBox(props) {
 
     const handleUppercase = (event) => {
         props.otherOptions.uppercase = event.target.checked;
-        console.log(props.otherOptions);
+        props.setUppercase(event.target.checked)
     };
 
     const handleLowercase = (event) => {
         props.otherOptions['lowercase'] = event.target.checked;
-        console.log(props.otherOptions);
-
+        props.setLowercase(event.target.checked)
     };  
 
     const handleNumbers = (event) => {
         props.otherOptions['numbers'] = event.target.checked;
-        console.log(props.otherOptions);
-
+        props.setNumbers(event.target.checked)
     };  
 
     const handleSymbols = (event) => {
         props.otherOptions['symbols'] = event.target.checked;
-        console.log(props.otherOptions);
+        props.setSymbols(event.target.checked)
     };  
 
     return (

@@ -99,7 +99,7 @@ export default function PsGBox() {
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
           <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
             <SizeSlider value={length} setValue={setLength}/>
-            <RulesCheckBox otherOptions={otherOptions} />
+            <RulesCheckBox otherOptions={otherOptions} uppercase={uppercase} setUppercase={setUppercase} lowercase={lowercase} setLowercase={setLowercase} numbers={numbers} setNumbers={setNumbers} symbols={symbols} setSymbols={setSymbols} />
           </Box>
         </Box>
     </Box>
