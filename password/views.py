@@ -11,7 +11,9 @@ def generated_password(length, up, low, num, sym):
     numbers_list = string.digits if num else ''
     symbols_list = "!@#$%^&*()" if sym else ''
     characters_list = upper_list + lower_list + numbers_list + symbols_list
-    if characters_list == '':
+    if length == 0:
+        return "Select rules first"
+    elif characters_list == '':
         return "Select rules first"
     else:
         characters = list(characters_list)
