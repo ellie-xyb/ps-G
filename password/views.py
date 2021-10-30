@@ -12,7 +12,7 @@ def generated_password(length, up, low, num, sym):
     symbols_list = "!@#$%^&*()" if sym else ''
     characters_list = upper_list + lower_list + numbers_list + symbols_list
     if length == 0:
-        return "Select rules first"
+        return "Give the length first"
     elif characters_list == '':
         return "Select rules first"
     else:

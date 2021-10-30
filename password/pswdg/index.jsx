@@ -29,28 +29,32 @@ export default function PsGBox() {
     'symbols': symbols,
  }
 
+ function sendOptions(){
+  fetch('/password/options', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      length: length,
+      uppercase: uppercase,
+      lowercase: lowercase,
+      numbers: numbers,
+      symbols: symbols,
+    })
+  })
+  .then(response => response.json())
+  .then(data => setValue(data['password'])) 
+ }
+
   // check option change
   useEffect(() => {
-    fetch('/password/options', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        length: length,
-        uppercase: uppercase,
-        lowercase: lowercase,
-        numbers: numbers,
-        symbols: symbols,
-      })
-    })
-    .then(response => response.json())
-    .then(data => setValue(data['password']))
+    sendOptions()
   }, [length, uppercase, lowercase, numbers, symbols])
 
   function refreshPage(){
-    window.location.reload(); 
+    sendOptions()
   }
 
   // handel copy action
