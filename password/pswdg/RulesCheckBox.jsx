@@ -7,28 +7,29 @@ export default function RulesCheckBox() {
     const [numbers, setNumbers] = React.useState(false);
     const [symbols, setSymbols] = React.useState(false);
 
-    let otherOptions = {}
+    let otherOptions = {
+        'uppercase': uppercase,
+        'lowercase': lowercase,
+        'numbers': numbers,
+        'symbols': symbols,
+     }
 
     const handleUppercase = (event) => {
-        setUppercase(event.target.checked);
-        otherOptions['uppercase'] = event.target.checked;
+        otherOptions.uppercase = event.target.checked;
         console.log(otherOptions);
     };
 
     const handleLowercase = (event) => {
-        setLowercase(event.target.checked);
         otherOptions['lowercase'] = event.target.checked;
         console.log(otherOptions);
     };  
 
     const handleNumbers = (event) => {
-        setNumbers(event.target.checked);
         otherOptions['numbers'] = event.target.checked;
         console.log(otherOptions);
     };  
 
     const handleSymbols = (event) => {
-        setSymbols(event.target.checked);
         otherOptions['symbols'] = event.target.checked;
         console.log(otherOptions);
     };  
