@@ -16,7 +16,7 @@ export default function SizeSlider(props) {
   };
 
   const handleInputChange = (event) => {
-    props.setValue(event.target.value === '' ? '' : Number(event.target.value));
+    props.setValue(event.target.value === '' ? 0 : Number(event.target.value));
   };
 
   const handleBlur = () => {

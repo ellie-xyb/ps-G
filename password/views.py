@@ -26,13 +26,16 @@ def generated_password(length, up, low, num, sym):
 
 
 def gather_options(request):
+    res = ''
+    status = 200
+
     if request.method == 'POST':
         dic = {}
         json_data = json.loads(request.body)
         print(request.body)
         if json_data:
             length = json_data.get('length')
-            if length:
+            if length != None:
                 up_check = json_data.get('uppercase')
                 low_check = json_data.get('lowercase')
                 num_check = json_data.get('numbers')
@@ -41,14 +44,18 @@ def gather_options(request):
                     length, up_check, low_check, num_check, sym_check)
                 print(password)
                 dic['password'] = password
-                dic = json.dumps(dic)
-                return HttpResponse(dic)
+                res = json.dumps(dic)
             else:
-                return HttpResponse('There is no length')
+                res = 'Give the length first'
+                status = 400
         else:
-            return HttpResponse('It is empty')
+            res = 'It is empty'
+            status = 400
     else:
-        return HttpResponse('Wrong action')
+        res = 'Wrong action'
+        status = 400
+
+    return HttpResponse(res, status=status)
 
 
 def index(request):
