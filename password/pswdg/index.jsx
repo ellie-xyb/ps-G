@@ -10,21 +10,24 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoopIcon from '@mui/icons-material/Loop';
 
 export default function PsGBox() {
-  // useEffect(() => {
-  //   fetch("/password/generated-password")
-  //   .then(res => res.text())
-  //   .then(
-  //     (result) => {
-  //       console.log(result)
-  //       setValue(result);
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   )
-  // }, [])
+  // handel password length
   const [value, setValue] = useState("");
   const [length, setLength] = useState(10);
+
+  // handel password other options
+  const [uppercase, setUppercase] = React.useState(false);
+  const [lowercase, setLowercase] = React.useState(false);
+  const [numbers, setNumbers] = React.useState(false);
+  const [symbols, setSymbols] = React.useState(false);
+
+  let otherOptions = {
+    'uppercase': uppercase,
+    'lowercase': lowercase,
+    'numbers': numbers,
+    'symbols': symbols,
+ }
+
+  // check option change
   useEffect(() => {
     fetch('/password/options', {
       method: 'POST',
@@ -34,13 +37,15 @@ export default function PsGBox() {
       },
       body: JSON.stringify({
         length: length,
-         
-
+        uppercase: uppercase,
+        lowercase: lowercase,
+        numbers: numbers,
+        symbols: symbols,
       })
     })
     .then(response => response.json())
     .then(data => setValue(data['password']))
-  }, [length])
+  }, [length, uppercase, lowercase, numbers, symbols])
 
   return (
     <Box
@@ -94,7 +99,7 @@ export default function PsGBox() {
           <Divider sx={{ width: 480, margin: '10px auto', }}  />
           <Box sx={{ p: '25px 12px', display: 'flex', alignItems: 'start', justifyContent: 'space-around', width: 580 }}>
             <SizeSlider value={length} setValue={setLength}/>
-            <RulesCheckBox />
+            <RulesCheckBox otherOptions={otherOptions} />
           </Box>
         </Box>
     </Box>

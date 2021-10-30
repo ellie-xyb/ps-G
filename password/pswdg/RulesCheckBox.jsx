@@ -1,37 +1,28 @@
 import React, { useState } from 'react';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
-export default function RulesCheckBox() {
-    const [uppercase, setUppercase] = React.useState(false);
-    const [lowercase, setLowercase] = React.useState(false);
-    const [numbers, setNumbers] = React.useState(false);
-    const [symbols, setSymbols] = React.useState(false);
-
-    let otherOptions = {
-        'uppercase': uppercase,
-        'lowercase': lowercase,
-        'numbers': numbers,
-        'symbols': symbols,
-     }
+export default function RulesCheckBox(props) {
 
     const handleUppercase = (event) => {
-        otherOptions.uppercase = event.target.checked;
-        console.log(otherOptions);
+        props.otherOptions.uppercase = event.target.checked;
+        console.log(props.otherOptions);
     };
 
     const handleLowercase = (event) => {
-        otherOptions['lowercase'] = event.target.checked;
-        console.log(otherOptions);
+        props.otherOptions['lowercase'] = event.target.checked;
+        console.log(props.otherOptions);
+
     };  
 
     const handleNumbers = (event) => {
-        otherOptions['numbers'] = event.target.checked;
-        console.log(otherOptions);
+        props.otherOptions['numbers'] = event.target.checked;
+        console.log(props.otherOptions);
+
     };  
 
     const handleSymbols = (event) => {
-        otherOptions['symbols'] = event.target.checked;
-        console.log(otherOptions);
+        props.otherOptions['symbols'] = event.target.checked;
+        console.log(props.otherOptions);
     };  
 
     return (

@@ -11,7 +11,6 @@ const Input = styled(MuiInput)`
 `;
 
 export default function SizeSlider(props) {
-  // const [value, setValue] = React.useState(1);
   const handleSliderChange = (event, newValue) => {
     props.setValue(newValue);
   };
